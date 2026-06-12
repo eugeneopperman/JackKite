@@ -27,6 +27,8 @@ folder as-is to any host (Netlify, Vercel, GoDaddy, cPanel, S3…).
 | `air-quality.html` | Venting & IAQ — ductwork, ductless splits, exhaust hoods, ventilators, UV lights |
 | `commercial.html` | Commercial/industrial HVAC contracting + sheet metal fabrication |
 | `contact.html` | Info, floating-label form, hours, payment methods, service area |
+| `blog.html` | Blog index — "Notes from the shop" |
+| `blog-*.html` | 5 posts rebuilt from the live site's blog (titles, dates and substance preserved, copy rewritten in brand voice) |
 
 ## Imagery & logo
 All photos are licensed **Adobe Stock** images supplied by the client —

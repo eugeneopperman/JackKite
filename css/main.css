@@ -1039,6 +1039,96 @@ body::after {
 .form-note { font-size: 0.85rem; color: var(--faint); }
 
 /* ============================================================
+   BLOG
+   ============================================================ */
+.post-rows { display: grid; }
+.post-row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.2rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left 0.45s var(--ease-out);
+}
+.post-row:first-child { border-top: 1px solid var(--line); }
+.post-row:hover { padding-left: clamp(0.5rem, 1.5vw, 1.25rem); }
+.post-row__date {
+  font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
+}
+.post-row__body { display: grid; gap: 0.45rem; min-width: 0; }
+.post-row__title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  line-height: 1.2; letter-spacing: -0.015em;
+  transition: color 0.35s;
+}
+.post-row:hover .post-row__title { color: var(--ember-soft); }
+.post-row__excerpt { font-size: 0.95rem; color: var(--muted); max-width: 46em; }
+.post-row .svc-row__arrow { width: 2.8rem; height: 2.8rem; }
+@media (max-width: 44em) {
+  .post-row { grid-template-columns: 1fr auto; }
+  .post-row__date { grid-column: 1 / -1; }
+}
+
+/* article body */
+.article {
+  max-width: 47rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--paper-dim);
+}
+.article > * + * { margin-top: 1.35rem; }
+.article h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.015em; line-height: 1.25;
+  color: var(--paper);
+  margin-top: 3rem;
+}
+.article h2::before {
+  content: "";
+  display: block;
+  width: 2.6rem; height: 2px;
+  background: var(--thermal);
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+.article strong { color: var(--paper); font-weight: 600; }
+.article a {
+  color: var(--paper);
+  background: var(--thermal) no-repeat left bottom / 100% 1px;
+  padding-bottom: 1px;
+}
+.article ul, .article ol { display: grid; gap: 0.7rem; }
+.article li { display: flex; gap: 0.8rem; align-items: baseline; }
+.article li::before {
+  content: "—";
+  background: var(--thermal);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-weight: 700; flex: none;
+}
+.article ol { counter-reset: item; }
+.article ol li::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.05em;
+  transform: translateY(-0.1em);
+}
+.article-callout {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,92,56,0.08), rgba(91,196,255,0.08)), var(--ink-2);
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  display: grid; gap: 0.8rem;
+  margin-top: 3rem !important;
+}
+.article-callout strong { font-family: var(--font-display); font-size: 1.15rem; }
+.article-callout .btn { justify-self: start; margin-top: 0.4rem; }
+
+/* ============================================================
    THERMOMETER SCROLL PROGRESS
    ============================================================ */
 .thermo {
