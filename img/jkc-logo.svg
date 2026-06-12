@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332 124" role="img" aria-label="JKC — Jack M. Kite Co.">
+  <defs>
+    <g id="jkc">
+      <!-- detached spark left of the J hook -->
+      <path d="M -26 74 L -8 74 L -8 94 L -26 94 Z"/>
+      <!-- J -->
+      <path d="M 44 0 L 70 0 L 70 92 L 62 100 L 8 100 L 0 92 L 0 56 L 26 56 L 26 74 L 44 74 Z"/>
+      <!-- K -->
+      <path d="M 86 0 L 116 0 L 116 40 L 150 0 L 186 0 L 146 47 L 174 100 L 140 100 L 122 64 L 116 71 L 116 100 L 86 100 Z"/>
+      <!-- C -->
+      <path d="M 224 0 L 284 0 L 278 30 L 238 30 L 232 36 L 232 64 L 238 70 L 278 70 L 284 100 L 224 100 L 204 90 L 196 70 L 196 30 L 204 10 Z"/>
+    </g>
+  </defs>
+  <g transform="translate(40 8) skewX(-14)">
+    <use href="#jkc" fill="#15171b" transform="translate(10 9)"/>
+    <use href="#jkc" fill="#d2262b" stroke="#ffffff" stroke-width="5" paint-order="stroke" stroke-linejoin="miter"/>
+  </g>
+</svg>

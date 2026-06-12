@@ -28,12 +28,17 @@ folder as-is to any host (Netlify, Vercel, GoDaddy, cPanel, S3…).
 | `commercial.html` | Commercial/industrial HVAC contracting + sheet metal fabrication |
 | `contact.html` | Info, floating-label form, hours, payment methods, service area |
 
-## Imagery
-All photos are hotlinked **Unsplash** placeholders inside `.ph` frames (each is
-labeled "Placeholder — replace with …"). To swap in real photography, drop files
-into an `img/` folder and change the `<img src>`; frames auto-cover. The service
-index hover previews on the home page are set per-row via `data-preview-img`.
-For production, self-host images rather than hotlinking.
+## Imagery & logo
+All photos are licensed **Adobe Stock** images supplied by the client —
+web-optimized copies live in `img/` (originals in `images/`, gitignored for repo
+size). Frames are `.ph` blocks that auto-cover; home-page hover previews are set
+per-row via `data-preview-img`.
+
+`img/jkc-logo.svg` is a **vector recreation** of the JKC mark (red letters,
+black extrusion, white keyline) — drawn from the supplied logo since only a
+low-res raster of the old lockup exists on the live site. If the client has the
+official vector file, drop it in as `img/jkc-logo.svg` and it replaces the
+recreation everywhere.
 
 ## Contact form
 Netlify-ready (`data-netlify="true"` — works automatically on Netlify with email

@@ -6,31 +6,32 @@
 
 :root {
   /* canvas */
-  --ink-0: #07090d;
-  --ink-1: #0a0d12;
-  --ink-2: #0e1319;
-  --ink-3: #131a23;
-  --ink-4: #1a2330;
+  --ink-0: #0a0e15;
+  --ink-1: #0f141c;
+  --ink-2: #141b25;
+  --ink-3: #1b2431;
+  --ink-4: #25313f;
 
   /* type */
   --paper: #e9eff5;
-  --paper-dim: #c2ccd8;
-  --muted: #8d99aa;
-  --faint: #5a6678;
+  --paper-dim: #c9d3df;
+  --muted: #98a4b5;
+  --faint: #6c788a;
 
-  /* thermal */
-  --ember: #ff6a3a;
-  --ember-soft: #ffa178;
-  --ember-deep: #c93f12;
+  /* thermal — ember leans toward the JKC logo red */
+  --ember: #ff5c38;
+  --ember-soft: #ff9d80;
+  --ember-deep: #c22f1b;
   --ice: #5bc4ff;
   --ice-soft: #a8e0ff;
   --ice-deep: #1d7fc4;
+  --brand-red: #d2262b;
 
   --thermal: linear-gradient(90deg, var(--ember), var(--ice));
   --thermal-v: linear-gradient(180deg, var(--ember), var(--ice));
 
-  --line: rgba(233, 239, 245, 0.08);
-  --line-strong: rgba(233, 239, 245, 0.16);
+  --line: rgba(233, 239, 245, 0.1);
+  --line-strong: rgba(233, 239, 245, 0.2);
 
   --font-display: "Sora", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -151,6 +152,17 @@ body::after {
 .sec { padding-block: clamp(5rem, 11vw, 9.5rem); position: relative; }
 .sec--tight { padding-block: clamp(3rem, 7vw, 5.5rem); }
 .sec--flush-top { padding-top: 0; }
+
+/* soft thermal ambience — lifts flat sections off the canvas */
+.sec--glow::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 50% at 4% 12%, rgba(255, 92, 56, 0.08), transparent 70%),
+    radial-gradient(45% 55% at 98% 88%, rgba(91, 196, 255, 0.07), transparent 70%);
+}
+.sec--glow > * { position: relative; }
 
 .sec-head { margin-bottom: clamp(2.5rem, 6vw, 4.5rem); display: grid; gap: 1.25rem; }
 
@@ -273,14 +285,12 @@ body::after {
   font-size: 1.05rem; letter-spacing: -0.01em;
   line-height: 1.1;
 }
-.brand__mark {
-  width: 2.4rem; height: 2.4rem; flex: none;
-  border-radius: 9px;
-  background: conic-gradient(from 220deg, var(--ember), var(--ice), var(--ember));
-  display: grid; place-items: center;
-  font-family: var(--font-display); font-weight: 800; font-size: 1.05rem;
-  color: var(--ink-0);
+.brand__logo {
+  height: 2.1rem; width: auto; flex: none;
+  transition: transform 0.35s var(--ease-out);
 }
+.brand:hover .brand__logo { transform: translateY(-2px); }
+.footer .brand__logo { height: 2.6rem; }
 .brand small {
   display: block;
   font-family: var(--font-mono); font-weight: 500;
@@ -389,13 +399,13 @@ body::after {
 .hero__bg {
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(55% 65% at 18% 75%, rgba(255, 106, 58, 0.16), transparent 70%),
-    radial-gradient(55% 65% at 82% 30%, rgba(91, 196, 255, 0.14), transparent 70%),
+    radial-gradient(55% 65% at 18% 75%, rgba(255, 92, 56, 0.22), transparent 70%),
+    radial-gradient(55% 65% at 82% 30%, rgba(91, 196, 255, 0.19), transparent 70%),
     var(--ink-0);
 }
 .hero__veil {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(7,9,13,0.35) 0%, rgba(7,9,13,0) 35%, rgba(10,13,18,0.92) 92%);
+  background: linear-gradient(180deg, rgba(10,14,21,0.3) 0%, rgba(10,14,21,0) 35%, rgba(15,20,28,0.88) 92%);
   pointer-events: none;
 }
 .hero__content {
@@ -829,17 +839,40 @@ body::after {
 }
 .page-hero__bg {
   position: absolute; inset: 0; z-index: -1;
-  background: var(--ink-0);
+  background: linear-gradient(180deg, var(--ink-0), var(--ink-1));
+}
+/* engineering grid, faded out radially — gives the flat dark canvas depth */
+.page-hero__bg::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(233, 239, 245, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233, 239, 245, 0.055) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask-image: radial-gradient(100% 130% at 75% -10%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(100% 130% at 75% -10%, #000 0%, transparent 70%);
 }
 .page-hero__bg::after {
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(50% 70% at 85% 0%, var(--ph-glow-a, rgba(255,106,58,0.13)), transparent 70%),
-    radial-gradient(45% 60% at 10% 100%, var(--ph-glow-b, rgba(91,196,255,0.1)), transparent 70%);
+    radial-gradient(50% 70% at 85% 0%, var(--ph-glow-a, rgba(255,92,56,0.2)), transparent 70%),
+    radial-gradient(45% 60% at 10% 100%, var(--ph-glow-b, rgba(91,196,255,0.15)), transparent 70%);
 }
-.page-hero--hot { --ph-glow-a: rgba(255,106,58,0.18); --ph-glow-b: rgba(255,106,58,0.07); }
-.page-hero--cold { --ph-glow-a: rgba(91,196,255,0.16); --ph-glow-b: rgba(91,196,255,0.07); }
+.page-hero--hot { --ph-glow-a: rgba(255,92,56,0.27); --ph-glow-b: rgba(255,92,56,0.1); }
+.page-hero--cold { --ph-glow-a: rgba(91,196,255,0.24); --ph-glow-b: rgba(91,196,255,0.1); }
+
+/* giant outlined ghost word behind the title */
+.page-hero__ghost {
+  position: absolute; right: -0.06em; top: 0.4em; z-index: -1;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(9rem, 24vw, 21rem);
+  line-height: 0.8; letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(233, 239, 245, 0.09);
+  user-select: none; pointer-events: none;
+  white-space: nowrap;
+}
 .page-hero__inner { display: grid; gap: 1.6rem; }
 .crumbs {
   font-family: var(--font-mono); font-size: 0.72rem;

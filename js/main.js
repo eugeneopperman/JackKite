@@ -205,6 +205,15 @@
     });
   }
 
+  /* ---------- sub-page ghost word: fade in, drift on scroll ---------- */
+  document.querySelectorAll('.page-hero__ghost').forEach(function (g) {
+    gsap.from(g, { opacity: 0, x: 60, duration: 1.4, ease: 'power3.out', delay: 0.3 });
+    gsap.to(g, {
+      xPercent: -10, ease: 'none',
+      scrollTrigger: { trigger: g.closest('.page-hero'), start: 'top top', end: 'bottom top', scrub: true }
+    });
+  });
+
   /* ---------- thermometer scroll progress ---------- */
   var thermoFill = document.querySelector('.thermo__fill');
   if (thermoFill) {
